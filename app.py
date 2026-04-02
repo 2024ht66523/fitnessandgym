@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 def create_app():
     app = Flask(__name__)
@@ -21,6 +21,10 @@ def create_app():
             }
     }
 
+    @app.route("/ui")
+    def ui():
+        return render_template("index.html", programs=programs)
+    
     @app.route("/")
     def home():
         return {"message": "Welcome to ACEest Fitness API"}

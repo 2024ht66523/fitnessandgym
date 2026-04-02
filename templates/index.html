@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ACEest Fitness</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .box {
+            border: 1px solid gold;
+            padding: 15px;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+        async function loadProgram() {
+            const program = document.getElementById("program").value;
+            const response = await fetch(`/programs/${program}`);
+            const data = await response.json();
+
+            document.getElementById("workout").innerText = data.workout;
+            document.getElementById("diet").innerText = data.diet;
+            document.getElementById("workout").style.color = data.color;
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <h1 style="color: gold;">ACEest FITNESS</h1>
+
+    <label>Select Program:</label><br>
+    <select id="program">
+        {% for prog in programs %}
+            <option value="{{ prog }}">{{ prog }}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+    <button onclick="loadProgram()">Show Plan</button>
+
+    <div class="box">
+        <h3>Workout</h3>
+        <p id="workout">Select a program</p>
+    </div>
+
+    <div class="box">
+        <h3>Diet</h3>
+        <p id="diet">Select a program</p>
+    </div>
+</div>
+</body>
+</html>
