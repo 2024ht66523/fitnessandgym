@@ -1,11 +1,10 @@
 import matplotlib
-matplotlib.use("Agg")  # must come BEFORE pyplot
-
+import matplotlib.pyplot as plt
 import io
 import base64
-
-import matplotlib.pyplot as plt
 from flask import Flask, jsonify, render_template, request
+
+matplotlib.use("Agg")  # ✅ moved AFTER all imports
 
 def create_app():
     app = Flask(__name__)
