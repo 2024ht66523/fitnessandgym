@@ -1,7 +1,6 @@
 import sqlite3
 import random
 from flask import Flask, render_template, request, redirect, session
-from datetime import datetime
 from fpdf import FPDF
 
 
@@ -63,10 +62,10 @@ def create_app(test_db=None):
 
     # ---------- HELPERS ----------
     def safe_float(v):
-        try:
-            return float(v)
-        except:
-            return 0.0
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return 0.0
 
     # ---------- LOGIN ----------
     @app.route("/", methods=["GET", "POST"])
