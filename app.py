@@ -4,7 +4,7 @@ import io
 import base64
 import sqlite3
 from datetime import datetime
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 
 matplotlib.use("Agg")
 DB_NAME = "aceest.db"
