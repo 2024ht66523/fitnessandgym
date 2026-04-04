@@ -2,6 +2,7 @@ import sqlite3
 import random
 from flask import Flask, render_template, request, redirect, session
 from fpdf import FPDF
+from datetime import date
 
 DB_NAME = "aceest.db"
 
